@@ -6,7 +6,7 @@ class Game
 
   attr_reader :ai_symbol, :player_symbol, :empty_positions, :current_turn
 
-  def initialize(ai_symbol, player_symbol)
+  def initialize(ai_symbol='O', player_symbol='X')
     @board = Array.new(9)
     @ai_symbol, @player_symbol = ai_symbol, player_symbol
     @empty_positions = (0..8).to_a
@@ -17,7 +17,6 @@ class Game
   def make_move(position, symbol)
     @board[position] = symbol
     @empty_positions.delete(position)
-    p @board
   end
 
   def empty?
@@ -39,10 +38,3 @@ class Game
     values.uniq.size == 1 && values[0] != nil
   end
 end
-
-game = Game.new('X', 'O')
-game.make_move(0, 'X')
-game.make_move(1, 'O')
-game.make_move(2, 'X')
-game.check_for_winner
-puts game.winner? # --> false
