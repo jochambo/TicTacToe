@@ -8,7 +8,7 @@ class Game
 
   attr_reader :ai_symbol, :player_symbol, :empty_positions, :current_turn, :winner, :board
 
-  def initialize(ai_symbol='O', player_symbol='X')
+  def initialize
     @board = Array.new(9)
     @ai_symbol, @player_symbol = 'O', 'X'
     @empty_positions = (0..8).to_a
@@ -32,11 +32,11 @@ class Game
   end
 
   def over?
-    !!@winner || empty_positions.size == 0
+    !!@winner || empty_positions.empty?
   end
 
   def number_of_moves
-    @board.size = @empty_positions.size
+    @board.size - @empty_positions.size
   end
 
   def random_corner
@@ -60,6 +60,13 @@ class Game
   def winning_line?(line)
     values = line.map { |position| @board[position] }
     values.uniq.size == 1 && values[0] != nil
+  end
+
+  def to_s
+    @board.each_slice(3) do |row|
+      p row
+    end
+    ""
   end
 
   def initialize_copy(source)

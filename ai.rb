@@ -1,6 +1,7 @@
 class AI
 
   def make_move(game)
+    return if game.over?
     @game = game
     @ai_symbol = game.ai_symbol
     @player_symbol = game.player_symbol
@@ -20,6 +21,7 @@ class AI
   def predict_move(game)
     return score(game) if game.over?
     moves = {}
+
     game.empty_positions.each do |position|
       test_game = game.dup
       test_game.make_move(position)
