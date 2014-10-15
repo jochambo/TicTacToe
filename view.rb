@@ -1,13 +1,5 @@
 class View
-  BOARD = <<BOARD
-
- X | X | X
------------
- X | X | X
------------
- X | X | X
-
-BOARD
+  BOARD = " X | X | X \n-----------\n X | X | X \n-----------\n X | X | X "
 
   def initialize(game)
     @game = game
@@ -33,7 +25,7 @@ BOARD
 
   def draw_board
     index = -1
-    @board.gsub("X") do
+    @board.gsub(" X ") do
       index += 1
       field = @game.board[index] ? @game.board[index] : " "
       @position == index ? "(#{field})" : " #{field} "
