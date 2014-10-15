@@ -10,7 +10,7 @@ class AI
 
   def best_move
     return @game.random_corner if @game.empty?
-    if @game.number_of_moves <= 1
+    if @game.number_of_moves == 1
       @game.center_taken? ? (return @game.random_corner) : (return @game.center)
     else
       predict_move(@game)

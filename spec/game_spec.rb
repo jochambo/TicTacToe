@@ -26,12 +26,12 @@ describe "Game" do
   end
 end
 
-describe "AI" do
-  describe 'next turn' do
-    let(:game){ Game.new }
-    let(:computer){ AI.new }
-    it "should choose corner if available" do
-      expect(game.best_move).to eq 0 || 2 || 6 || 8
-    end
-  end
-end
+# describe "AI" do
+#   describe 'next turn' do
+#     let(:game){ Game.new }
+#     let(:computer){ AI.new }
+#     it "should choose corner if available" do
+#       expect(game.best_move).to eq 0 || 2 || 6 || 8
+#     end
+#   end
+# end
