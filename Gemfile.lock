@@ -3,7 +3,10 @@ GEM
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
+    curses (1.0.1)
     diff-lcs (1.2.5)
+    dispel (0.0.7)
+      curses
     ffi (1.9.5)
     formatador (0.2.5)
     guard (2.6.1)
@@ -50,6 +53,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dispel
   guard
   guard-rspec
   rspec
