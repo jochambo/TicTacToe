@@ -1,10 +1,12 @@
+require_relative 'ai'
+
 class Game
   LINES  = [[0,1,2], [3,4,5],
             [6,7,8], [0,3,6],
             [1,4,7], [2,5,8],
             [0,4,8], [2,4,6]]
 
-  attr_reader :ai_symbol, :player_symbol, :empty_positions, :current_turn
+  attr_reader :ai_symbol, :player_symbol, :empty_positions, :current_turn, :winner, :board
 
   def initialize(ai_symbol='O', player_symbol='X')
     @board = Array.new(9)
@@ -18,6 +20,7 @@ class Game
     @board[position] = @current_turn
     @empty_positions.delete(position)
     @current_turn = new_turn
+    check_for_winner
   end
 
   def new_turn
@@ -28,12 +31,12 @@ class Game
     empty_positions.size == 9
   end
 
-  def number_of_moves
-    @board.size = @empty_positions.size
+  def over?
+    !!@winner || empty_positions.size == 0
   end
 
-  def winner?
-    !!@winner
+  def number_of_moves
+    @board.size = @empty_positions.size
   end
 
   def random_corner
@@ -57,5 +60,15 @@ class Game
   def winning_line?(line)
     values = line.map { |position| @board[position] }
     values.uniq.size == 1 && values[0] != nil
+  end
+
+  def initialize_copy(source)
+    empty_positions = @empty_positions.map {|x| x }
+    board = @board.map {|x| x }
+    current_turn = @current_turn
+    super
+    @current_turn = current_turn
+    @empty_positions = empty_positions
+    @board = board
   end
 end
