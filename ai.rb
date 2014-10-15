@@ -1,12 +1,16 @@
 class AI
-
-  def make_move(game)
-    return if game.over?
+  def initialize(game)
     @game = game
     @ai_symbol = game.ai_symbol
     @player_symbol = game.player_symbol
+  end
+
+  def make_move(game)
+    return if game.over?
     @game.make_move(best_move)
   end
+
+private
 
   def best_move
     return @game.random_corner if @game.empty?
