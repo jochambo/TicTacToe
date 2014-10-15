@@ -1,10 +1,5 @@
-require_relative 'game'
-
 class View
-  def initialize(game)
-    @game = game
-    @position = 0
-    @board = <<BOARD
+  BOARD = <<BOARD
 
  X | X | X
 -----------
@@ -14,19 +9,14 @@ class View
 
 BOARD
 
-  end
-
-  def draw_board
-    index = -1
-    @board.gsub(" X ") do
-      index += 1
-      field = @game.board[index] ? @game.board[index] : " "
-      @position == index ? "(#{field})" : " #{field} "
-    end
+  def initialize(game)
+    @game = game
+    @position = 0
+    @board = BOARD
   end
 
   def draw_screen
-    [draw_board, status_line, position_line, "Q = Quit | R = Reset \nArrow Keys = Move | Return = Play"].join("\n")
+    [draw_board, status_line, position_line, instructions].join("\n")
   end
 
   def move(x,y)
@@ -37,6 +27,21 @@ BOARD
 
   def set
     @game.make_move(@position)
+  end
+
+  private
+
+  def draw_board
+    index = -1
+    @board.gsub("X") do
+      index += 1
+      field = @game.board[index] ? @game.board[index] : " "
+      @position == index ? "(#{field})" : " #{field} "
+    end
+  end
+
+  def instructions
+    "Q = Quit | R = Reset \nArrow Keys = Move | Return = Play"
   end
 
   def position_line
