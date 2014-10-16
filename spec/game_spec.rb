@@ -93,7 +93,7 @@ describe "Game" do
     end
 
     it "should have no remaining moves" do
-      expect(@cats_game.empty_positions.empty?).to be_truthy
+      expect(@cats_game.empty_cells.empty?).to be_truthy
     end
 
     it "should have no winner" do
