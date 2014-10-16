@@ -13,14 +13,12 @@ class View
   def initialize(game)
     @game = game
     @position = 0
+    @status = update_status
   end
 
   def draw_screen
-    [draw_board, status_line, position_line, instructions].join("\n")
-  end
-
-  def view_status
-
+    update_status
+    [draw_board, update_status, position_line, instructions].join("\n")
   end
 
   def move(x,y)
@@ -60,13 +58,13 @@ class View
     "Position: #{@position + 1}"
   end
 
-  def status_line
+  def update_status
     if @game.winner
-      "'#{@game.winner}'" + STATUS[:win]
+      @status = "'#{@game.winner}'" + STATUS[:win]
     elsif @game.over?
-      STATUS[:draw]
+      @status = STATUS[:draw]
     else
-      "Let's play!"
+      @status = STATUS[:start]
     end
   end
 end

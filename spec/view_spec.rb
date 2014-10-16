@@ -27,10 +27,13 @@ describe "View" do
 
   context "attempting a move" do
     before(:each) { view.attempt_position }
+    before(:each){ game.make_move(1) }
+    p @board
 
-    it "should update the status to bad move" do
-      view.attempt_position
-      expect(view.status).to eq STATUS[:bad_move]
+    it "should not allow move to occupied cell" do
+      view.move(1,0)
+      view.set
+      expect(game.number_of_moves).to eq 1
     end
 
     xit 'should display a piece in the proper position after a move' do
