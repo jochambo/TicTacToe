@@ -30,12 +30,21 @@ describe "View" do
 
     it "should update the status to bad move" do
       view.attempt_position
-      expect(view_status).to eq STATUS[:bad_move]
+      expect(view.status).to eq STATUS[:bad_move]
     end
 
-    it 'should display a piece in the proper position after a move' do
+    xit 'should display a piece in the proper position after a move' do
       expect(view.draw_screen).to include(board = "(X)|   |   \n-----------\n   |   |   \n-----------\n   |   |   "
         )
     end
+  end
+
+  context "moving the cursor" do
+    before(:each){ view.move(1,0) }
+
+    it "should update the cursor position" do
+      expect(view.position).to eq 1
+    end
+
   end
 end
