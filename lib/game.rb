@@ -32,7 +32,7 @@ class Game
   end
 
   def valid_position?(cell)
-    @empty_positions.include?(position)
+    @empty_cells.include?(cell)
   end
 
   def empty?

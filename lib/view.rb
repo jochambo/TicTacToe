@@ -28,7 +28,7 @@ class View
 
   def attempt_position
     if @game.valid_position?(@position)
-      set_position
+      set
     end
   end
 

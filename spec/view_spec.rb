@@ -1,6 +1,6 @@
 require 'rspec'
-require_relative '../game'
-require_relative '../view'
+require_relative '../lib/game'
+require_relative '../lib/view'
 
 describe "View" do
   STATUS = {
@@ -25,14 +25,13 @@ describe "View" do
   end
 
   context "attempting a move" do
-    before(:each) { view.attempt_position }
-    before(:each){ game.make_move(1) }
-    p @board
 
     it "should not allow move to occupied cell" do
       view.move(1,0)
       view.set
+      view.set
       expect(game.number_of_moves).to eq 1
+      expect(game.board[1]).to eq 'X'
     end
 
     xit 'should display a piece in the proper position after a move' do
