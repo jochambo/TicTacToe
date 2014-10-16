@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../game'
+require_relative '../lib/game'
 
 describe "Game" do
   let(:game) { Game.new  }

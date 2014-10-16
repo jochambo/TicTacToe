@@ -5,7 +5,6 @@ class View
     start: "Shall we play a game?",
     draw: "It's a draw... \nThe only winning move is not to play.\nPress 'R' to reset.",
     win: " wins!\nThe only winning move is not to play.\nPress 'R' to reset.",
-    bad_move: "Not a valid move. Try again."
   }
 
   attr_reader :position, :status
@@ -29,9 +28,7 @@ class View
 
   def attempt_position
     if @game.valid_position?(@position)
-      set_position
-    else
-      @status = STATUS[:bad_move]
+      set
     end
   end
 

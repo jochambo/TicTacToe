@@ -11,6 +11,9 @@ class AI
   end
 
 private
+  def test_ai(board)
+
+  end
 
   def best_move
     return @game.random_corner if @game.empty?

@@ -9,7 +9,7 @@ class Game
   def initialize
     @board = Array.new(9)
     @empty_cells = (0..8).to_a
-    @ai_symbol, @player_symbol = 'O', 'X'
+    @ai_symbol, @player_symbol = set_ai_symbol, set_player_symbol
     @current_turn = @player_symbol
     @winner = nil
   end
@@ -23,8 +23,16 @@ class Game
     true
   end
 
+  def set_ai_symbol
+    'O'
+  end
+
+  def set_player_symbol
+    'X'
+  end
+
   def valid_position?(cell)
-    @empty_positions.include?(position)
+    @empty_cells.include?(cell)
   end
 
   def empty?
