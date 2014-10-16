@@ -7,7 +7,6 @@ describe "View" do
     start: "Shall we play a game?",
     draw: "It's a draw... \nThe only winning move is not to play.\nPress 'R' to reset.",
     win: " wins!\nThe only winning move is not to play.\nPress 'R' to reset.",
-    bad_move: "Not a valid move. Try again."
   }
 
   let(:game) { Game.new }
