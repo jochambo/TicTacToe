@@ -12,7 +12,7 @@ A code challenge developed in Ruby to be played on the command line.
   * ```bundle install```
 
 ## Play
-*run
+* run
   * ```ruby runner.rb```
   * You play as 'X' and will make the first move.
   * Use the arrow keys to navigate and press return to complete your move.
@@ -22,9 +22,8 @@ A code challenge developed in Ruby to be played on the command line.
 
 
 ## Created by:
-|Name | Github | LinkedIn |
-|:---:|:------:|:--------:|
-|Joey Chamberlin | [Website](http://joeychamberlin.com) | [LinkedIn](https://www.linkedin.com/in/joeychamberlin)|
+Joey Chamberlin | [Website](http://joeychamberlin.com) | [LinkedIn](https://www.linkedin.com/in/joeychamberlin)
+
 #### License
 The MIT License (MIT)
 
