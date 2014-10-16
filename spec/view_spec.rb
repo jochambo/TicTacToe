@@ -4,12 +4,12 @@ require_relative '../view'
 
 describe "View" do
   STATUS = {
-    start: "Let's play!",
-    draw: "It's a draw... Press 'R' to reset.",
-    win: " wins! Press 'R' to reset.",
+    start: "Shall we play a game?",
+    draw: "It's a draw... \nThe only winning move is not to play.\nPress 'R' to reset.",
+    win: " wins!\nThe only winning move is not to play.\nPress 'R' to reset.",
     bad_move: "Not a valid move. Try again."
-
   }
+
   let(:game) { Game.new }
   let(:view) { View.new(game) }
 
