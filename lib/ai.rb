@@ -26,18 +26,18 @@ private
     return score(game) if game.over?
     moves = {}
 
-    game.empty_positions.each do |position|
+    game.empty_cells.each do |cell|
       test_game = game.dup
-      test_game.make_move(position)
-      moves[position] = predict_move(test_game)
+      test_game.make_move(cell)
+      moves[cell] = predict_move(test_game)
     end
 
     if game.current_turn == @ai_symbol
-      max_score = moves.max_by{|position, score| score }
+      max_score = moves.max_by{|cell, score| score }
       @best_choice = max_score[0]
       return max_score[1]
     else
-      min_score = moves.min_by{|position, score| score }
+      min_score = moves.min_by{|cell, score| score }
       @best_choice = min_score[0]
       return min_score[1]
     end

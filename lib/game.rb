@@ -4,35 +4,39 @@ class Game
             [1,4,7], [2,5,8],
             [0,4,8], [2,4,6]]
 
-  attr_reader :ai_symbol, :player_symbol, :empty_positions, :current_turn, :winner, :board
+  attr_reader :ai_symbol, :player_symbol, :empty_cells, :current_turn, :winner, :board
 
   def initialize
     @board = Array.new(9)
-    @empty_positions = (0..8).to_a
+    @empty_cells = (0..8).to_a
     @ai_symbol, @player_symbol = 'O', 'X'
-    @current_turn = player_symbol
+    @current_turn = @player_symbol
     @winner = nil
   end
 
-  def make_move(position)
-    return false unless @empty_positions.include?(position) && !over?
-    @board[position] = @current_turn
-    @empty_positions.delete(position)
-    @current_turn = new_turn
+  def make_move(cell)
+    return false unless @empty_cells.include?(cell) && !over?
+    @board[cell] = @current_turn
+    @empty_cells.delete(cell)
+    @current_turn = next_turn
     check_for_winner
     true
   end
 
+  def valid_position?(cell)
+    @empty_positions.include?(position)
+  end
+
   def empty?
-    empty_positions.size == 9
+    empty_cells.size == 9
   end
 
   def over?
-    !!@winner || empty_positions.empty?
+    !!@winner || empty_cells.empty?
   end
 
   def number_of_moves
-    @board.size - @empty_positions.size
+    @board.size - @empty_cells.size
   end
 
   def random_corner
@@ -44,12 +48,12 @@ class Game
   end
 
   def center_taken?
-    !!@board[4]
+    @board[4] != nil
   end
 
 private
 
-  def new_turn
+  def next_turn
     @current_turn == @ai_symbol ? @player_symbol : @ai_symbol
   end
 
@@ -65,12 +69,12 @@ private
   end
 
   def initialize_copy(source)
-    empty_positions = @empty_positions.map {|x| x }
-    board = @board.map {|x| x }
+    empty_cells = @empty_cells.map {|cell| cell }
+    board = @board.map {|cell| cell }
     current_turn = @current_turn
     super
     @current_turn = current_turn
-    @empty_positions = empty_positions
+    @empty_cells = empty_cells
     @board = board
   end
 end
