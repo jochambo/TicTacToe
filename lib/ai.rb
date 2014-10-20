@@ -7,15 +7,12 @@ class AI
 
   def make_move(game)
     return if game.over?
-    @game.make_move(best_move)
+    @game.make_move(make_best_move)
   end
 
 private
-  def test_ai(board)
 
-  end
-
-  def best_move
+  def make_best_move
     return @game.random_corner if @game.empty?
     if @game.number_of_moves == 1
       @game.center_taken? ? (return @game.random_corner) : (return @game.center)

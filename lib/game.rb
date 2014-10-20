@@ -9,7 +9,7 @@ class Game
   def initialize
     @board = Array.new(9)
     @empty_cells = (0..8).to_a
-    @ai_symbol, @player_symbol = set_ai_symbol, set_player_symbol
+    @ai_symbol, @player_symbol = ai_symbol, player_symbol
     @current_turn = @player_symbol
     @winner = nil
   end
@@ -20,14 +20,13 @@ class Game
     @empty_cells.delete(cell)
     @current_turn = next_turn
     check_for_winner
-    true
   end
 
-  def set_ai_symbol
+  def ai_symbol
     'O'
   end
 
-  def set_player_symbol
+  def player_symbol
     'X'
   end
 
